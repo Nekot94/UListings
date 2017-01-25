@@ -67,10 +67,27 @@ public class TextScript : MonoBehaviour {
         mainText.text = "Вы пришли домой, поели и продолжили свою жалкую обывательскую жизнь\n\n";
     }
     private void House_0() {
-        mainText.text = "\n\n"
-            + "Купить еду - К\n"
-            + "Украсть коробку - У\n";
+        mainText.text = "Вы пришли домой. Добро пожаловать, госпожа! Перед вами выбор:\n\n"
+            + "Лечь спать - К\n"
+            + "Осмотреть коробку - У\n";
         if (Input.GetKeyDown(KeyCode.R))
-            myState = States.house_1;
+            myState = States.bed_0;
+        if (Input.GetKeyDown(KeyCode.E))
+            myState = States.machine_0;
     }
-}
+    private void Bed_0() {
+        mainText.text = "Вы стырили коробку из общественного места, где это не осталось бы незамеченным\n\n"
+            + "вы в своем уме, Анна? Вдруг там бомба? Надо осмотреть коробку и избавиться от нее в случае чего\n"
+            + "Вернуться - В\n";
+        if (Input.GetKeyDown(KeyCode.D))
+            myState = States.house_0;
+    }
+    private void Machine_0() {
+        mainText.text = "Как только вы дотрагиваитесь до коробки, она превращается в огромную машину с кучей кнопок\n\n"
+            + "Нажать на большую красную кнопку - Н\n"
+            + "Вернуться - В\n";
+        if (Input.GetKeyDown(KeyCode.D))
+            myState = States.house_0;
+        if (Input.GetKeyDown(KeyCode.E))
+            myState = States.machine_0;
+    }
